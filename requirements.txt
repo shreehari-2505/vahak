@@ -1,0 +1,21 @@
+# Vahak v1.0 — Python Hub Dependencies
+# ──────────────────────────────────────────────────────────────────────────────
+# Production boot command (8 workers to bypass GIL and saturate NVMe queues):
+#   granian --interface asgi app.main:app --host 0.0.0.0 --port 8000 --workers 8
+#
+# Development boot command (single worker, auto-reload):
+#   granian --interface asgi app.main:app --host 0.0.0.0 --port 8000 --reload
+# ──────────────────────────────────────────────────────────────────────────────
+
+# ASGI framework — Domain-Driven routing, DI, OpenAPI docs
+fastapi[standard]
+
+# Rust-powered ASGI server — native sendfile() zero-copy DMA transfers
+# Supports http.response.pathsend ASGI extension for OS-level file streaming
+granian
+
+# Async file I/O — chunked upload ingestion without blocking the event loop
+aiofiles
+
+# High-speed JSON serializer — replaces stdlib json, used as FastAPI default
+orjson
